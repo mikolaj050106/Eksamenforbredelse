@@ -15,7 +15,7 @@ conn.commit()
 def legg_til_bruker():
     navn = input("Skriv inn navn")
     pc_nummer = input("skriv inn PC-nummer")
-    cursor.excecute("INSERT INTO brukere (navn, pc_nummer) VALUES (?,?)", (navn, pc_nummer))
+    cursor.execute("INSERT INTO brukere (navn, pc_nummer) VALUES (?,?)", (navn, pc_nummer))
     conn.commit()
     print("Bruker lagt til!")
 
