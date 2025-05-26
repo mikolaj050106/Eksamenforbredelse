@@ -3,7 +3,7 @@ import sqlite3
 conn = sqlite3.connect("brukere.db")
 cursor = conn.cursor()
 
-cursor.excecute('''
+cursor.execute('''
 CREATE TABLE IF NOT EXISTS brukere (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     navn TEXT NOT NULL,
