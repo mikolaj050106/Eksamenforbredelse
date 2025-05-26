@@ -15,8 +15,9 @@ def index():
         cursor.execute("INSERT INTO brukere (navn, pcnummer) VALUES (?, ?)", (navn, pcnummer))
         conn.commit()
 
-    cursor.execute("SELECT * FROM brukere")
+    cursor.execute("SELECT navn, pcnummer FROM brukere")
     brukere = cursor.fetchall()
+    print(brukere)  # For debugging
     conn.close()
 
     return render_template_string('''
