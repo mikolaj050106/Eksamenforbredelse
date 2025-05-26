@@ -3,11 +3,11 @@ import sqlite3
 
 app = Flask(__name__)
 
-@app.route("/", methods=["GET, POST"])
+@app.route("/", methods=["GET", "POST"])
 def index():
     conn = sqlite3.connect("brukere.db")
     cursor = conn.cursor()
-    cursor.execute("CREATE TABLE IF NOT EXIST brukere (navn TEXT, pcnummer TEXT)")
+    cursor.execute("CREATE TABLE IF NOT EXISTS brukere (navn TEXT, pcnummer TEXT)")
 
     if request.method == "POST":
         navn = request.form["navn"]
