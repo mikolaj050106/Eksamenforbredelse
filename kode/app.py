@@ -21,19 +21,75 @@ def index():
     conn.close()
 
     return render_template_string('''
-    <h2>Registrer bruker</h2>
-    <form method="POST">
-        Navn: <input type="text" name="navn"><br>
-        PC-nummer: <input type="text" name="pcnummer"><br>
-        <input type="submit" value="Registrer">
-    </form>
-    <h3>Registrerte brukere:</h3>
-    <ul>
-        {% for navn, pcnummer in brukere %}
-            <li>{{ navn }} – {{ pcnummer }}</li>
-        {% endfor %}
-    </ul>
+    <html>
+    <head>
+        <title>Brukerregistrering</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f2f2f2;
+                padding: 20px;
+            }
+            h2, h3 {
+                color: #333;
+            }
+            form {
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                max-width: 400px;
+                margin-bottom: 30px;
+            }
+            input[type="text"] {
+                width: 100%;
+                padding: 8px;
+                margin: 8px 0;
+                box-sizing: border-box;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+            input[type="submit"] {
+                background-color: #4CAF50;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+            input[type="submit"]:hover {
+                background-color: #45a049;
+            }
+            ul {
+                list-style-type: none;
+                padding: 0;
+            }
+            li {
+                background-color: #fff;
+                margin: 5px 0;
+                padding: 10px;
+                border-radius: 4px;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Registrer bruker</h2>
+        <form method="POST">
+            Navn: <input type="text" name="navn" required><br>
+            PC-nummer: <input type="text" name="pcnummer" required><br>
+            <input type="submit" value="Registrer">
+        </form>
+        <h3>Registrerte brukere:</h3>
+        <ul>
+            {% for navn, pcnummer in brukere %}
+                <li><strong>{{ navn }}</strong> – {{ pcnummer }}</li>
+            {% endfor %}
+        </ul>
+    </body>
+    </html>
     ''', brukere=brukere)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
