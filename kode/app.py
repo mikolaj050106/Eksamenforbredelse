@@ -92,7 +92,7 @@ def index():
         <h3>Registrerte brukere:</h3>
         <ul>
             {% for navn, pcnummer, problem in brukere %}
-                <li><strong>{{ navn }}</strong> – {{ pcnummer }}</li>
+                <li><strong>{{ navn }}</strong> – {{ pcnummer }}</strong> – {{ problem }}</li>
             {% endfor %}
         </ul>
     </body>
