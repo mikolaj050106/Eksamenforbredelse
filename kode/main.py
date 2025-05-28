@@ -8,14 +8,21 @@ CREATE TABLE IF NOT EXISTS brukere (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     navn TEXT NOT NULL,
     pc_nummer TEXT NOT NULL
+    problem TEXT
 )
 ''')
 conn.commit()
 
 def legg_til_bruker():
-    navn = input("Skriv inn navn")
-    pc_nummer = input("skriv inn PC-nummer")
-    cursor.execute("INSERT INTO brukere (navn, pc_nummer) VALUES (?,?)", (navn, pc_nummer))
+    navn = input("Skriv inn navn: ").strip()
+    pc_nummer = input("Skriv inn PC-nummer: ").strip()
+    problem = input("Beskriv inn problemet: ").strip()
+
+    if not navn or not pc_nummer:
+        print("Navn og pc-nummer kan ikke være tomme.")
+        return
+
+    cursor.execute("INSERT INTO brukere (navn, pc_nummer, problem) VALUES (?,?,?)", (navn, pc_nummer, problem))
     conn.commit()
     print("Bruker lagt til!")
 
