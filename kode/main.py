@@ -28,13 +28,17 @@ def legg_til_bruker():
 
 def vis_brukere():
     cursor.execute("SELECT * FROM brukere")
-    for rad in cursor.fetchall():
-        print(f"ID: {rad[0]}, Navn: {rad[1]}, PC-nummer: {rad[2]}")
+    brukere = cursor.fetchall()
+    if not brukere:
+        print("Ingen brukere registrert.")
+    else: 
+        for rad in brukere:
+            print(f"ID: {rad[0]}, Navn: {rad[1]}, PC-nummer: {rad[2]}, Problem: {rad[3]}")
 
 def meny():
     while True:
         print("\n1. Legg til bruker\n2. Vis alle brukere\n3. Avslutt")
-        valg = input("Velg et alternativ: ")
+        valg = input("Velg et alternativ: ").strip()
         if valg == "1":
             legg_til_bruker()
         elif valg == "2":
