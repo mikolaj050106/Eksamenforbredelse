@@ -85,8 +85,9 @@ def index():
         <form method="POST">
             Navn: <input type="text" name="navn" required><br>
             PC-nummer: <input type="text" name="pcnummer" required><br>
-            Problem: <textarea name="problem" rows="4" placeholder="Beskriv problemet..."
-            <input type="submit" value = "Registrer">
+            Problem:<br>
+            <textarea name="problem" rows="4" placeholder="Beskriv problemet..." required></textarea><br>
+            <input type="submit" value="Registrer">
         </form>
         <h3>Registrerte brukere:</h3>
         <ul>
