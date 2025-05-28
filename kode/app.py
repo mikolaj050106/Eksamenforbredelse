@@ -7,7 +7,7 @@ app = Flask(__name__)
 def index():
     conn = sqlite3.connect("brukere.db")
     cursor = conn.cursor()
-    cursor.execute("CREATE TABLE IF NOT EXISTS brukere (navn TEXT, pcnummer TEXT)")
+    cursor.execute("CREATE TABLE IF NOT EXISTS brukere (navn TEXT, pcnummer TEXT, problem TEXT)")
 
     if request.method == "POST":
         navn = request.form["navn"]
