@@ -18,7 +18,7 @@ def index():
     if request.method == "POST":
         navn = request.form["navn"].strip()
         pcnummer = request.form["pcnummer"].strip()
-        problem = request.form["form"].strip
+        problem = request.form["problem"].strip()
         if navn and pcnummer and problem:
             cursor.execute("INSERT INTO brukere (navn, pcnummer, problem) VALUES (?, ?, ?)", (navn, pcnummer, problem))
             conn.commit()
@@ -85,7 +85,7 @@ def index():
         <form method="POST">
             Navn: <input type="text" name="navn" required><br>
             PC-nummer: <input type="text" name="pcnummer" required><br>
-            Problem: <textera name="problem" rows="4" placeholder="Beskriv problemet..."
+            Problem: <textarea name="problem" rows="4" placeholder="Beskriv problemet..."
             <input type="submit" value="Registrer">
         </form>
         <h3>Registrerte brukere:</h3>

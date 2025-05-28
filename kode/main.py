@@ -3,7 +3,6 @@ import sqlite3
 conn = sqlite3.connect("brukere.db")
 cursor = conn.cursor()
 
-# Oppretter tabellen med nytt 'problem'-felt
 cursor.execute('''
 CREATE TABLE IF NOT EXISTS brukere (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
